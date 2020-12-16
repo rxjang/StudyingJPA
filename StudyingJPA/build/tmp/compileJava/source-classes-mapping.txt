@@ -1,4 +1,9 @@
+com/test/StudyingJPA/domain/posts/Posts.java
+ com.test.StudyingJPA.domain.posts.Posts
+ com.test.StudyingJPA.domain.posts.Posts$PostsBuilder
 com/test/StudyingJPA/controller/MainController.java
  com.test.StudyingJPA.controller.MainController
 com/test/StudyingJPA/Application.java
  com.test.StudyingJPA.Application
+com/test/StudyingJPA/domain/posts/PostsRepository.java
+ com.test.StudyingJPA.domain.posts.PostsRepository

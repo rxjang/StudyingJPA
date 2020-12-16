@@ -1,0 +1,2 @@
+com/test/StudyingJPA/domain/posts/PostsRepositoryTest.java
+ com.test.StudyingJPA.domain.posts.PostsRepositoryTest
