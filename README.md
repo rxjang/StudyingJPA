@@ -1,0 +1,2 @@
+# StudyingJPA
+jpa공부
