@@ -50,7 +50,9 @@ public class PostApiControllerTest {
 
         //when
         ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url,requestDto,Long.class);
-
+        /*
+            ResoponseEntity는 HttpEntity를 상속받음으로써 HttpHeader와 body를 가질 수 있다.
+         */
         //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);

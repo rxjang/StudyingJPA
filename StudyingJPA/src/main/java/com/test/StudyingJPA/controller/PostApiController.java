@@ -18,6 +18,11 @@ public class PostApiController {
 
     @PostMapping("/api/vi/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto){
+        /*
+            @RequestBody    HTTP 요청의 body 내용을 자바 객체로 매핑하는 역할을 함
+            @RestController은 @Controller와 다르게 리턴값에 자동으로 @ResponseBody를 붙이게되어
+                Http응답데이터(body)에 자바 각체가 매팽되어 전달됩니다.
+         */
         return postService.save(requestDto);
     }
 }
