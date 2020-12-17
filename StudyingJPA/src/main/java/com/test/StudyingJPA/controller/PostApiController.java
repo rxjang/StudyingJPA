@@ -1,11 +1,11 @@
 package com.test.StudyingJPA.controller;
 
+import com.test.StudyingJPA.dto.PostsResponseDto;
 import com.test.StudyingJPA.dto.PostsSaveRequestDto;
+import com.test.StudyingJPA.dto.PostsUpdateRequestDto;
 import com.test.StudyingJPA.service.posts.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -24,5 +24,15 @@ public class PostApiController {
                 Http응답데이터(body)에 자바 각체가 매팽되어 전달됩니다.
          */
         return postService.save(requestDto);
+    }
+
+    @PutMapping("/api/vi/posts/{id}")
+    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto){
+        return postService.update(id,requestDto);
+    }
+
+    @GetMapping("/api/vi/posts/{id}")
+    public PostsResponseDto fiondById(@PathVariable Long id){
+        return postService.findById(id);
     }
 }

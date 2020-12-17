@@ -62,4 +62,17 @@ public class PostApiControllerTest {
         assertThat(all.get(0).getContent()).isEqualTo(content);
 
     }
+
+    @Test
+    public void Posts_update() throws Exception{
+        //given
+        Posts savePosts = postsRepository.save(Posts.builder()
+                .title("title")
+                .author("author")
+                .build());
+
+        Long updateId = savePosts.getId();
+        String expectedTitle = "title2";
+        String expectedContent
+    }
 }
