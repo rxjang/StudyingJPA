@@ -7,3 +7,10 @@ com/test/StudyingJPA/Application.java
  com.test.StudyingJPA.Application
 com/test/StudyingJPA/domain/posts/PostsRepository.java
  com.test.StudyingJPA.domain.posts.PostsRepository
+com/test/StudyingJPA/dto/PostsSaveRequestDto.java
+ com.test.StudyingJPA.dto.PostsSaveRequestDto
+ com.test.StudyingJPA.dto.PostsSaveRequestDto$PostsSaveRequestDtoBuilder
+com/test/StudyingJPA/service/posts/PostService.java
+ com.test.StudyingJPA.service.posts.PostService
+com/test/StudyingJPA/controller/PostApiController.java
+ com.test.StudyingJPA.controller.PostApiController

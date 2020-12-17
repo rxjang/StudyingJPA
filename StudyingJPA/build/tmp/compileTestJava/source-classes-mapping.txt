@@ -1,2 +1,4 @@
 com/test/StudyingJPA/domain/posts/PostsRepositoryTest.java
  com.test.StudyingJPA.domain.posts.PostsRepositoryTest
+com/test/StudyingJPA/controller/PostApiControllerTest.java
+ com.test.StudyingJPA.controller.PostApiControllerTest
