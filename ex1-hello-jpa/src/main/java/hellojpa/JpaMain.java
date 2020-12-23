@@ -18,23 +18,17 @@ public class JpaMain {
 
         //code
         try{
-//            Member findMember=em.find(Member.class,1L);
-//            //삭제
-//            //em.remove(findeMember)
-//            //수정
-//            findMember.setName("HelloJPA");
-//            System.out.println("findMember.id = " + findMember.getId());
-//            System.out.println("findMember.name = " + findMember.getName());
+            //비영속
+            Member member = new Member();
+            member.setId(100L);
+            member.setName("HelloJPA");
 
-            List<Member> result=em.createQuery("select m from Member as m",Member.class)
-                    .setFirstResult(2)
-                    .setMaxResults(5)
-                    .getResultList();
-            //페이징 예시
-            
-            for(Member member:result){
-                System.out.println("member.name = " + member.getName());
-            }
+            //영속
+            System.out.println("=====Before=====");
+            em.persist(member);
+            System.out.println("=====After=====");
+
+            em.detach(member);
 
             tx.commit();
         }catch(Exception e){
