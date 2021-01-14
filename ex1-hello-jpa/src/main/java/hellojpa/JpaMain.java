@@ -18,24 +18,24 @@ public class JpaMain {
 
         //code
         try{
-//
-//            Member member =new Member(200L,"member200");
-//            em.persist(member);
-//            em.flush();
 
-            //영속
-            Member member =em.find(Member.class,150L);
-            member.setName("AAAA");
+            //저장
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
 
-//            em.detach((member));
-//            //조회만 하고 업데이트는 실행하지 않음
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setTeam(team);
+            em.persist(member);
 
-            em.clear();
-            //영속성 컨텍스트 초기화
+            Member findMember = em.find(Member.class, member.getId());
 
-            Member member2 = em.find(Member.class,150L);
+            Team findTeam = findMember.getTeam();
+            System.out.println("findTeam = " + findTeam.getId());
 
-            System.out.println("=============================");
+            
+
             tx.commit();
         }catch(Exception e){
             tx.rollback();
