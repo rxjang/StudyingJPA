@@ -16,9 +16,9 @@ public class Member extends BaseEntity{
     @Column(name = "MEMBER_ID")
     private Long id;
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
+
+    @Embedded
+    private Address address;
 
     //관례로 많이 사용
     @OneToMany(mappedBy = "member")
