@@ -33,15 +33,9 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-//            String query = "SELECT " +
-//                                    "CASE WHEN m.age <= 10 then '학생요금' " +
-//                                    "     WHEN m.age >= 10 then '경로 요금' " +
-//                                    "else '일반요금' " +
-//                                    "end " +
-//                            "FROM Member m";
-
-//            String query = "SELECT COALESCE( m.username, '이름 없는 회원') FROM Member m";
-            String query = "SELECT nullif( m.username, '관리자') FROM Member m";
+//            String query = "SELECT concat('a', 'b') FROM Member m";
+//            String query = "SELECT locate('de','abcdefg') FROM Member m";   //위치를 알려줌
+            String query = "SELECT function('group_concat', m.username) FROM Member m";
 
             List<String> result = em.createQuery(query, String.class).getResultList();
 
