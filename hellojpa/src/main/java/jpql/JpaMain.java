@@ -27,13 +27,22 @@ public class JpaMain {
             member.setUsername("team1");
             member.setAge(10);
             member.setTeam(team);
+            member.setType(MemberType.USER);
             em.persist(member);
 
-            String query = "SELECT m FROM Member m LEFT JOIN Team t ON m.username = t.name ";
-            List<Member> result = em.createQuery(query, Member.class)
+            em.flush();
+            em.clear();
+
+            String query = "SELECT m.username, 'HELLO', TRUE FROM Member m " +
+                            "where m.type = jpql.MemberType.USER";
+            List<Object[]> result = em.createQuery(query)
                     .getResultList();
 
-            System.out.println("result = " + result.size());
+            for(Object[] objects : result) {
+                System.out.println("objects = " + objects[0]);
+                System.out.println("objects = " + objects[1]);
+                System.out.println("objects = " + objects[2]);
+            }
 
             tx.commit();
         }catch(Exception e){
