@@ -19,19 +19,23 @@ public class JpaMain {
         //code
         try{
 
-            Member member = new Member();
-            member.setUsername("member1");
-            member.setAge(10);
-            em.persist(member);
+            for( int i =0 ; i < 100; i++) {
+                Member member = new Member();
+                member.setUsername("member" + i);
+                member.setAge(i);
+                em.persist(member);
+            }
 
-            TypedQuery<Member> query1 = em.createQuery("SELECT m FROM Member m", Member.class);
-            List<Member> resultList = query1.getResultList();
-            Member result = query1.getSingleResult();
+            List<Member> result = em.createQuery("SELECT m FROM Member m ORDER BY m.age DESC", Member.class)
+            .setFirstResult(1)
+            .setMaxResults(10)
+            .getResultList();
 
-            Member singleresult = em.createQuery("SELECT m FROM Member m WHERE m.username = :username", Member.class)
-                    .setParameter("username", "member1")
-                    .getSingleResult();
-            System.out.println("singleResult = " + singleresult.getUsername());
+            System.out.println("result = " + result.size());
+
+            for(Member member1 : result) {
+                System.out.println("member1 = " + member1);
+            }
 
             tx.commit();
         }catch(Exception e){
