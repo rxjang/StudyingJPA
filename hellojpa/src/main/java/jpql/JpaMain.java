@@ -6,6 +6,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.util.Collection;
 import java.util.List;
 
 public class JpaMain {
@@ -19,28 +20,52 @@ public class JpaMain {
         //code
         try{
 
-            Team team = new Team();
-            team.setName("team1");
-            em.persist(team);
+            Team teamA = new Team();
+            teamA.setName("teamA");
+            em.persist(teamA);
 
-            Member member = new Member();
-            member.setUsername("관리자");
-            member.setAge(10);
-            member.setTeam(team);
-            member.setType(MemberType.USER);
-            em.persist(member);
+            Team teamB = new Team();
+            teamB.setName("teamB");
+            em.persist(teamB);
+
+            Member member1 = new Member();
+            member1.setUsername("회원1");
+            member1.setAge(10);
+            member1.setTeam(teamA);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername("회원2");
+            member2.setAge(10);
+            member2.setTeam(teamA);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername("회원3");
+            member3.setAge(10);
+            member3.setTeam(teamB);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
 
             em.flush();
             em.clear();
 
-//            String query = "SELECT concat('a', 'b') FROM Member m";
-//            String query = "SELECT locate('de','abcdefg') FROM Member m";   //위치를 알려줌
-            String query = "SELECT function('group_concat', m.username) FROM Member m";
+//            String query = "SELECT m FROM Member m join fetch m.team";
+//
+//            List<Member> result = em.createQuery(query, Member.class).getResultList();
+//
+//            for(Member member : result) {
+//                System.out.println("member = " + member.getUsername() + ", " + member.getTeam().getName());
+//            }
 
-            List<String> result = em.createQuery(query, String.class).getResultList();
+            String query = "SELECT DISTINCT t FROM Team t join fetch t.members";
 
-            for(String s :result) {
-                System.out.println("s = " + s);
+            List<Team> result = em.createQuery(query, Team.class).getResultList();
+
+            for(Team team : result) {
+                System.out.println("team = " + team.getName() + ", " + team.getMembers().size());
             }
 
             tx.commit();
