@@ -36,7 +36,7 @@ public abstract class Item {
     private List<Category> categories = new ArrayList<>();
 
 
-    // === 비즈니스 로직 ===소 //
+    // === 비즈니스 로직 === //
     /*
     * stock 증가
     */
@@ -45,7 +45,7 @@ public abstract class Item {
     }
 
     /*
-     * stock 감
+     * stock 감소
      */
     public void removeStock(int quantity) {
         int restStock = this.stockQuantity - quantity;
