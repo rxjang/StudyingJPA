@@ -31,6 +31,10 @@ public class OrderRepository {
         return em.find(Order.class, id);
     }
 
+    public List<Order> findAll() {
+        return em.createQuery("SELECT o from Order o", Order.class).getResultList();
+    }
+
     public List<Order> findAll(OrderSearch orderSearch) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Order> cq = cb.createQuery(Order.class);
